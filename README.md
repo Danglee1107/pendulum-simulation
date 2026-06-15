@@ -22,11 +22,37 @@ cd pendulum-simulation
 uv sync
 ```
 
-Note: I'm not certain what you mean by `uv sync` — if you meant `uvicorn` (for FastAPI apps), install requirements and run for development:
+4. Sync dependencies
+
+`uv sync` reads the project's `uv.lock` file and downloads the libraries required to run the project.
+
+Run `uv sync` inside an activated virtual environment. Example (PowerShell on Windows):
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+uv sync
+```
+
+Example (bash / POSIX):
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+uv sync
+```
+
+Verify the `uv` CLI is available before running sync:
+
+```bash
+uv --version
+```
+
+If `uv` is not installed, follow your project's `uv` installation instructions (install method depends on the `uv` tool you use). If you meant `uvicorn` for a FastAPI app instead, install requirements and run:
 
 ```bash
 pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-Please confirm which `uv sync` behavior you want and I will adjust the instructions or add a helper script.
+If you'd like, I can add a small helper script (`scripts/sync.ps1` / `scripts/sync.sh`) to automate these steps.
